@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <div id="app">
+      <button @click="f=!f">toggle</button>
+      <input v-hidden="f" />
+      <comp />
+    </div>
+    <script>
+      Vue.component("comp", {
+        template: `
+        <div>
+          <button @click="hate=!hate">toggle</button>
+          <div v-hidd="hate">{{msg}}</div>
+        </div>`,
+        directives: {
+          hidd: {
+            update: function (el, binding) {
+              console.log(binding);
+              console.log(binding.value);
+              el.style.display = binding.value ? "none" : "block";
+            },
+          },
+        },
+        data() {
+          return { hate: false, msg: 1 };
+        },
+      });
+
+      Vue.directive("hidden", {
+        update(el, binding) {
+          console.log(el, binding);
+          el.style.display = binding.value ? "inline" : "none";
+        },
+      });
+
+      new Vue({
+        el: "#app",
+        data() {
+          return {
+            f: true,
+          };
+        },
+      });
+    </script>
+  </body>
+</html>

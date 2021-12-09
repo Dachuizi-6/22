@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" />
+    <button>取消</button>
+
+    <script src="./index.js"></script>
+
+    <script>
+      const inpNode = document.querySelector("input");
+      const btnNode = document.querySelector("button");
+
+      const inputChange = debounce(
+        function (event) {
+          console.log(`发送了${++count}次请求`);
+          console.log(this, event);
+
+          return "zohnny";
+        },
+        2000,
+        true,
+        (res) => {
+          console.log("返回值", res);
+        }
+      );
+
+      let count = 0;
+
+      // const tempFn = function (...args) {
+      const tempFn = (...args) => {
+        // console.log(this, 111); // 如果是箭头函数，这里指向window
+        // inputChange.apply(this, args).then((res) => {
+        inputChange.apply(inpNode, args).then((res) => {
+          console.log("promise的返回值", res);
+        });
+      };
+      // inpNode.oninput = inputChange;
+      inpNode.oninput = tempFn;
+
+      btnNode.onclick = function () {
+        inputChange.cancel();
+      };
+    </script>
+  </body>
+</html>

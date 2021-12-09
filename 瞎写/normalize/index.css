@@ -1,0 +1,64 @@
+#wrap {
+  margin: auto;
+  width: 700px;
+  height: 400px;
+  background-color: thistle;
+  display: flex;
+  flex-direction: column;
+}
+#wrap #header {
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+#header .title {
+  margin-left: 50px;
+  margin-top: 10px;
+}
+#header .search {
+  margin-right: 50px;
+}
+#header .searchicon {
+  height: 22px;
+  width: 22px;
+  margin-top: 5px;
+}
+#body {
+  display: flex;
+  width: 700px;
+  height: 300px;
+}
+#body .MusicList {
+  border-right: 2px solid orange;
+  width: 220px;
+  height: 100%;
+}
+#body .showing {
+  width: 354px;
+  height: 100%;
+  border-right: 2px solid orange;
+}
+#body .musicul {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+}
+#body .musicli {
+  width: 40px;
+  height: 20px;
+}
+#body .MV {
+  margin-right: 15px;
+  height: 8px;
+  width: 8px;
+}
+#footer {
+  height: 50px;
+  width: 100%;
+}
+#footer .video {
+  background-color: orangered;
+  height: 100%;
+  width: 100%;
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <!-- <div id="app">{{value}}</div> -->
+    <div id="app">
+      <input v-bind:value="value" />
+      <!-- <input value="{{value}}" /> -->
+
+      <div v-bind:class="{ active: isActive, 'text-danger': hasError }"></div>
+
+      <div v-bind:class="[active,textDanger]"></div>
+
+      <div :style="styleObj">爱你Vue</div>
+      <div :style="[color,fontSize]">数组写法</div>
+    </div>
+    <script>
+      new Vue({
+        el: "#app",
+        data() {
+          return {
+            value: 42,
+            isActive: true,
+            hasError: true,
+
+            // 数组写法就是通过data属性的值直接写在数组中
+            active: "active",
+            textDanger: "text-danger",
+
+            // 对象写法
+            styleObj: {
+              color: "red",
+              fontSize: "20px",
+            },
+            color: {
+              color: "red",
+            },
+            fontSize: {
+              fontSize: "50px",
+            },
+          };
+        },
+        mounted() {
+          // setTimeout(this.a, 1000);
+          console.log(111);
+          // this.a();
+        },
+        methods: {
+          a() {
+            this.value++;
+            console.log(this.value);
+            setTimeout(this.a, 1000);
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

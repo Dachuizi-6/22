@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+    <div id="app">
+      <input
+        id="checkbox"
+        type="checkbox"
+        ref="c2"
+        v-bind:checked="checked"
+        @change="change"
+      />
+      <label for="checkbox">{{ checked }}</label>
+
+      <select v-model="which">
+        <!-- <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option> -->
+        <option>1</option>
+        <option>2</option>
+      </select>
+
+      <textarea v-model="msg"></textarea>
+      <p style="white-space: pre">{{msg}}</p>
+    </div>
+
+    <script>
+      var a = new Vue({
+        el: "#app",
+        data() {
+          return {
+            checked: true,
+            which: "1",
+            msg: "",
+          };
+        },
+        methods: {
+          change() {
+            this.checked = this.$refs.c2.checked;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
